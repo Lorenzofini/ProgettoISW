@@ -1,0 +1,240 @@
+body, header, h1, h2, h5, ul {
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  background-color: #fff;
+}
+
+header{
+  box-shadow: 0 0 15px rgb(0 0 0 / 10%);
+  display: flex;
+}
+
+footer {
+  background-color: rgb(54, 54, 54);
+  color: #fff;
+  padding: 20px 0;
+  text-align: center;
+}
+
+header > h1 {
+  font-family:" Open Sans,sans-serif";
+  margin-left: 20%;
+  padding-top: 13px;
+
+}
+
+article, form, main > section {
+  background-color: #fff;
+  margin-bottom: 20px;
+  padding-bottom: 20px;
+}
+
+article {
+  text-align: center;
+  box-shadow: 0 0 15px rgb(0 0 0 / 10%);
+  width: 23%;
+  display: inline-table;
+  margin: 5%;
+  padding-top: 10px;
+
+}
+
+article > a >img {
+  max-height: 200px;
+  max-width: 100%;
+}
+
+article > a > h3, article > a > p {
+  padding: 0 5%;
+  font-family: "Lucida Sans", "Lucida Sans Regular", "Lucida Grande", "Lucida Sans Unicode", Geneva, Verdana, sans-serif;
+  text-align: left;
+}
+
+article > a > p {
+  font-size: 12px;
+}
+
+a{
+  text-decoration: none;
+  color: #000;
+}
+
+article > a:hover {
+  color:rgb(219, 69, 83);
+}
+
+form {
+  padding: 20px 5%;
+}
+
+form h2, main > section > h2 {
+  font-family: "Lucida Sans", "Lucida Sans Regular", "Lucida Grande", "Lucida Sans Unicode", Geneva, Verdana, sans-serif;
+  margin: 0 0 20px;
+}
+
+form ul {
+  list-style: none;
+  width: 80%;
+  margin: 0 10%;
+}
+
+form ul li {
+  margin-bottom: 20px;
+}
+
+form ul li:last-child {
+  text-align: right;
+}
+
+form ul li label {
+  display: inline-block;
+  width: 50%;
+}
+
+form ul li input:not([type="submit"]) {
+  width: 50%;
+  box-sizing: border-box;
+}
+
+form ul li input[type="submit"]:hover {
+  cursor: pointer;
+  color:rgb(219, 69, 83);
+}
+
+form.modulo-ricerca{
+  padding-left: 20px;
+  width: 40%;
+}
+
+input#search{
+  border: none;
+  border-bottom: groove;
+  width: 70%;
+  font-size: 20px;
+}
+
+input#submit{
+  margin-left: 5px;
+}
+
+img.login{
+  max-height: 40px;
+  max-width: 100%;
+  padding: 14px;
+}
+
+img.shop{
+  max-height: 45px;
+  max-width: 100%;
+  padding: 11px;
+  margin-left: 28%;
+}
+
+section{
+  margin: 40px 10% 10px 10%;
+}
+
+section > div > h2{
+  font-family: 'Poppins';
+  font-weight: bold;
+  display: inline-block;
+  margin: auto;
+}
+
+div#rated{
+  display: inline-block;
+  padding-left: 40px;
+  
+}
+
+div#gameName{
+  display: block;
+}
+
+div#platform{
+  color: #979595;
+  margin: 0px;
+  padding: 0px;
+}
+
+div#add{
+  display:  block;
+  text-align: center;
+}
+
+section > div#add > img {
+  max-height: 410px;
+  max-width: 290px;
+  display: inline-block;
+  margin: auto;
+  padding-top: 20px;
+}
+
+div#addShop{
+  display: inline-block;
+  margin-left: 25%;
+
+}
+
+
+div#addShop > h3{
+  margin-bottom: 30px;
+  text-align: center;
+  font-size: 50px;
+  font-family: monospace
+}
+
+div#addShop > button{
+
+  padding: 10px;
+  display: block;
+  color: white;
+  background-color: red;
+  text-align: center;
+
+}
+
+div#kind{
+  display: block;
+  padding-top: 20px;
+}
+
+div#addShop >div#kind > p{
+  display: inline-block;
+}
+ 
+div#addShop > div#kind > h4{
+   display: inline-block;
+}
+
+div#addShop > p{
+ display: inline-block;
+}
+
+div#addShop > h4{
+  display: inline-block;
+}
+
+h3{
+  text-align: center;
+  font-size: 30px;
+}
+
+iframe{
+  width:1280px;
+  height:720px;
+  
+} 
+
+@media (max-width: 700px){
+
+  iframe{
+    width:300px;
+    height:200px;
+    
+  } 
+
+}
