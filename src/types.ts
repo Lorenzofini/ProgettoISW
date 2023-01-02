@@ -10,3 +10,8 @@ export interface Games {
   namekind: string
 }
 
+export interface Utente {
+  idlogin: number
+  username: string
+  nome: string
+}

@@ -120,6 +120,12 @@ input#submit{
   margin-left: 5px;
 }
 
+img.logout{
+  max-height: 40px;
+  max-width: 100%;
+  padding: 14px;
+}
+
 img.login{
   max-height: 40px;
   max-width: 100%;

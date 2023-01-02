@@ -1,9 +1,17 @@
 <script lang="ts">
+import { Utente } from "~/types"
 
 export default defineComponent({
+    // Fornisce l'oggetto utente a tutti i componenti dell'applicativo
+    provide() {
+    return {
+      utente: computed(() => this.utente)
+    }
+  },
   data() {
     return {
-      searchGame: "",
+      utente: null as Utente | null,
+      searchGame: ""
     }
   },
   methods: {
@@ -17,26 +25,44 @@ export default defineComponent({
         .then((response) => window.location.href = "/game/" + response)
         .catch((e) => alert(e))
     },
+    async getUtente() {
+      const utente = await $fetch("/api/auth/profilo")
+      this.utente = utente
+    },
+    async logout() {
+      await $fetch("/api/auth/logout")
+      this.getUtente()
+    }
+  },
+  mounted() {
+    this.getUtente()
   }
 })
 </script>
 
 
 <template>
+  <Head>
+    <Title>Game Shop</Title>
+    <Meta name="description" content="Game Shop" />
+  </Head>
   <header>
-    <h1><a href="/">Game Shop</a></h1>
+    <h1><NuxtLink to="/">Game Shop</NuxtLink></h1>
     <form class="modulo-ricerca">
       <input id="search" type="text" placeholder="Cerca nel sito" v-model="searchGame">
       <input id="submit" type="button" value="cerca" @click=search()>
     </form>
-    <a href="/api/login"><img class="login" src="/img/login.png" /></a>
-    <a href="/api/shop"><img class="shop" src="/img/shop.png" /></a>
+    <!--Mostra il link alla pagina di login se l'utente non è autenticato (!utente)-->
+    <NuxtLink v-if="!utente" to="/login"><img class="login" src="/img/login.png" alt="Login"/></NuxtLink>
+    <NuxtLink v-else to="/" @click.prevent="logout"><img class="logout" src="/img/logout.png" alt="Logout"/></NuxtLink>
+    <!--Mostra il tasto di logout altrimenti-->
+    <NuxtLink to="/shop"><img class="shop" src="/img/shop.png"/></NuxtLink>
   </header>
   <main>
     <NuxtPage />
   </main>
   <footer>
-    <p>Progetto - Agostini A. Fini L. 2022/2023</p>
+    <p>Progetto Ingegneria dei Sistemi Web - Agostini A. Fini L. 2022/2023</p>
   </footer>
 </template>
 
