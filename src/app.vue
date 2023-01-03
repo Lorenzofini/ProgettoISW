@@ -11,7 +11,7 @@ export default defineComponent({
   data() {
     return {
       utente: null as Utente | null,
-      searchGame: ""
+      searchGame: "",
     }
   },
   methods: {
@@ -56,7 +56,7 @@ export default defineComponent({
     <NuxtLink v-if="!utente" to="/login"><img class="login" src="/img/login.png" alt="Login"/></NuxtLink>
     <NuxtLink v-else to="/" @click.prevent="logout"><img class="logout" src="/img/logout.png" alt="Logout"/></NuxtLink>
     <!--Mostra il tasto di logout altrimenti-->
-    <NuxtLink to="/shop"><img class="shop" src="/img/shop.png"/></NuxtLink>
+    <NuxtLink to="/cart"><img class="shop" src="/img/shop.png"/></NuxtLink>
   </header>
   <main>
     <NuxtPage />

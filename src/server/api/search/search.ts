@@ -6,7 +6,6 @@ export default defineEventHandler(async function(event) {
 
     const { game } = await readBody(event)
   
-    // Esegue la query al database per ottenere i dati dell'utente in base allo username
     const connection = await createConnection()
     const [results] = await connection.execute(
       `SELECT idgame, gamename, platform, relasedate, price, rate, img, namekind
@@ -23,9 +22,7 @@ export default defineEventHandler(async function(event) {
     if (!Array.isArray(results) || results.length == 0) {
       throw createError({ statusCode: 400, statusMessage: "Nome errate"})
     }
-  
-  
-    // Confronta l'hash della password fornita con quello nel database
+    
     let i = 0
   
     for (const name in results){

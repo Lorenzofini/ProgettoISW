@@ -1,4 +1,5 @@
 <script lang="ts">
+import { Utente } from '../types';
 // Applica a questa pagina il middleware creato in ~/middleware/require-logout
 // Vedi:
 // - https://nuxt.com/docs/api/utils/define-page-meta
@@ -11,9 +12,10 @@ export default defineComponent({
     return {
       loginUsername: "",
       loginPassword: "",
-      registerUsername: "",
+      registerEmail: "",
       registerPassword: "",
-      registerName: ""
+      registerName: "",
+      message: "",
     }
   },
   methods: {
@@ -32,7 +34,7 @@ export default defineComponent({
       $fetch("/api/auth/register", {
         method: "POST",
         body: {
-          username: this.registerUsername,
+          username: this.registerEmail,
           password: this.registerPassword,
           nome: this.registerName
         }
@@ -65,8 +67,8 @@ export default defineComponent({
   <form @submit.prevent="onRegisterSubmit">
     <ul>
       <li>
-        <label for="register-username">Username:</label>
-        <input type="text" id="register-username" name="register-username" v-model="registerUsername" />
+        <label for="register-username">Email:</label>
+        <input type="text" id="register-username" name="register-username" v-model="registerEmail" />
       </li>
       <li>
         <label for="register-password">Password:</label>
@@ -77,7 +79,7 @@ export default defineComponent({
         <input type="text" id="register-name" name="register-name" v-model="registerName" />
       </li>
       <li>
-        <input type="submit" name="submit" value="Registrati" />
+        <input type="submit" name="submit" value="Registrati"/>
       </li>
     </ul>
   </form>
