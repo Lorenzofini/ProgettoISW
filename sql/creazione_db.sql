@@ -15,7 +15,7 @@ CREATE SCHEMA IF NOT EXISTS `gamesisw` DEFAULT CHARACTER SET utf8 ;
 USE `gamesisw` ;
 
 -- -----------------------------------------------------
--- Table `blogisw`.`autore`
+-- Table `gamesisw`.`game`
 -- -----------------------------------------------------
 CREATE TABLE IF NOT EXISTS `gamesisw`.`game` (
   `idgame` INT NOT NULL AUTO_INCREMENT,
@@ -30,7 +30,7 @@ ENGINE = InnoDB;
 
 
 -- -----------------------------------------------------
--- Table `blogisw`.`articolo`
+-- Table `gamesisw`.`image`
 -- -----------------------------------------------------
 CREATE TABLE IF NOT EXISTS `gamesisw`.`image` (
   `idimage` INT NOT NULL AUTO_INCREMENT,
@@ -47,7 +47,7 @@ ENGINE = InnoDB;
 
 
 -- -----------------------------------------------------
--- Table `blogisw`.`categoria`
+-- Table `gamesisw`.`kind`
 -- -----------------------------------------------------
 CREATE TABLE IF NOT EXISTS `gamesisw`.`kind` (
   `idkind` INT NOT NULL AUTO_INCREMENT,
@@ -57,7 +57,7 @@ ENGINE = InnoDB;
 
 
 -- -----------------------------------------------------
--- Table `blogisw`.`articolo_ha_categoria`
+-- Table `gamesisw`.`kind_of_game`
 -- -----------------------------------------------------
 CREATE TABLE IF NOT EXISTS `gamesisw`.`kind_of_game` (
   `game` INT NOT NULL,
@@ -77,6 +77,10 @@ CREATE TABLE IF NOT EXISTS `gamesisw`.`kind_of_game` (
     ON UPDATE NO ACTION)
 ENGINE = InnoDB;
 
+
+-- -----------------------------------------------------
+-- Table `gamesisw`.`login`
+-- -----------------------------------------------------
 CREATE TABLE IF NOT EXISTS `gamesisw`.`login` (
   `idlogin` INT NOT NULL AUTO_INCREMENT,
   `username` VARCHAR(100) NOT NULL,
