@@ -3,12 +3,12 @@ import { createConnection } from "~/server/utils/db"
 export default defineEventHandler(async function (event) {
     
 
-    const { Gamename,  Platform, Relasedate, Price, Namekind} = await readBody(event)
+    const { Gamename,  Platform, Trailer, Relasedate, Price, Rate, Img, Namekind} = await readBody(event)
     const connection = await createConnection()
     await connection.execute(
-        `INSERT INTO game (gamename, platform, relasedate, price)
-        VALUES (?, ?, ?, ?)`,
-        [Gamename, Platform, Relasedate, Price])
+        `INSERT INTO game (gamename, platform, trailer, relasedate, price, rate)
+        VALUES (?, ?, ?, ?, ?, ?)`,
+        [Gamename, Platform, Trailer, Relasedate, Price, Rate])
 
     const [results] = await connection.execute(
         `SELECT idgame
@@ -26,6 +26,11 @@ export default defineEventHandler(async function (event) {
         `INSERT INTO kind_of_game (game, kind)
         VALUES (?, ?)`,
         [numero, Namekind])
+
+    await connection.execute(
+        `INSERT INTO image (img, game)
+        VALUES (?, ?)`,
+        [Img ,numero])
 
 })
 
