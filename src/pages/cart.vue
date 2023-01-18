@@ -15,7 +15,7 @@ export default defineComponent({
   },
   methods: {
     getcart() {
-      $fetch("/api/cart/cart").then(response => this.games = response as Games[])
+      $fetch("/api/cart").then(response => this.games = response as Games[])
       console.log(this.games)
     },
   }, 

@@ -5,23 +5,20 @@ export default defineComponent({
   data() {
     return {
      game: null as Games | null,
-     gamename: [] as Games [],
     }
   },
   methods: {
     getgame() {
       $fetch("/api/game/" + this.$route.params.idGame).then(response => this.game = (response as any)[0])
     },
-    sendOrder(gamename: any) {
-      console.log(gamename)
+    sendOrder(gamenumber: number) {
+      console.log(gamenumber)
       $fetch("/api/order", {
         method: "POST",
         body: {
-          cart: gamename
+          cart: gamenumber
         }
       })
-      .then(() => window.location.href = "/cart")
-      .catch((e) => alert(e))
     },
   },
   mounted() {
@@ -41,7 +38,7 @@ export default defineComponent({
         <img :src="'/img/' + game.img" alt="" />
         <div id="addShop">
           <h3>{{game.price}}€</h3>
-          <button type="button" @click="sendOrder(game)">AGGIUNGI AL CARRELLO</button>
+          <button type="button" @click="sendOrder(game?.idgame)">AGGIUNGI AL CARRELLO</button>
           <div id="kind"><h4>Genere: </h4><p>{{game.namekind}}</p></div>
           <h4>Rilascio: </h4><p>{{game.relasedate}}</p>
         </div>

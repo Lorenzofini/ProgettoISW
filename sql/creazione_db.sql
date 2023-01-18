@@ -90,12 +90,16 @@ CREATE TABLE IF NOT EXISTS `gamesisw`.`login` (
   PRIMARY KEY (`idlogin`))
 ENGINE = InnoDB;
 
-CREATE TABLE IF NOT EXISTS `gamesisw`.`order` (
+
+-- -----------------------------------------------------
+-- Table `gamesisw`.`ordine`
+-- -----------------------------------------------------
+CREATE TABLE IF NOT EXISTS `gamesisw`.`ordine` (
   `idorder` INT NOT NULL AUTO_INCREMENT,
-  `idgame` VARCHAR(100) NOT NULL,
+  `idgame` INT NOT NULL,
   `date` VARCHAR(100) NOT NULL,
-  `idlogin` VARCHAR(100) NOT NULL
-  PRIMARY KEY (`idlogin`))
+  `idlogin` VARCHAR(100) NOT NULL,
+  PRIMARY KEY (`idorder`))
 ENGINE = InnoDB;
 
 SET SQL_MODE=@OLD_SQL_MODE;
