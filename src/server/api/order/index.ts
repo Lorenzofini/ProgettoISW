@@ -12,5 +12,12 @@ export default defineEventHandler(async function (event) {
     await connection.execute(
         `INSERT INTO ordine (idgame, date, idlogin)
         VALUES (?, ?, ?)`,
-        [cart, orderdate, user?.idlogin])
+        [cart, orderdate, user?.idlogin]
+    )
+    await connection.execute(
+        `INSERT INTO storico (idgame, date, idlogin)
+        VALUES (?, ?, ?)`,
+        [cart, orderdate, user?.idlogin]
+    )
+    return { message: "Articlo aggiunto al carrello" }
 })

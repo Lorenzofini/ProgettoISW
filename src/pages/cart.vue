@@ -18,6 +18,9 @@ export default defineComponent({
       $fetch("/api/cart").then(response => this.games = response as Games[])
       console.log(this.games)
     },
+    buy() {
+      $fetch("/api/buy").then(window.location.href="/")
+    }
   }, 
   mounted() {
     this.getcart()
@@ -26,6 +29,7 @@ export default defineComponent({
 </script>
 
 <template>
+<div v-if="games.length>0">
   <section>
       <h2>CARRELLO</h2>
       <NuxtLink to="/storico">Vai allo Storico</NuxtLink>
@@ -35,7 +39,7 @@ export default defineComponent({
           <h3>{{game.gamename}}</h3><p>{{game.platform}}</p>
         </div>
         <div id="price">
-          <p>{{game.price}}€</p>
+          <p>{{game.totale}}€</p>
           <p>Quantità:{{ game.quantità }}</p>
         </div>
         <hr>
@@ -43,6 +47,10 @@ export default defineComponent({
   </section>
   <section>
     <h3>Totale €</h3>
-    <button type="button"><NuxtLink to="/buy">ACQUISTA</NuxtLink></button>
+    <button type="button" @click="buy()">PAGA</button>
   </section>
+</div>
+<div v-else>
+  <p>Il carrello è vuoto</p>
+</div>
 </template>
