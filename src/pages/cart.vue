@@ -9,30 +9,31 @@ definePageMeta({
 export default defineComponent({
   data() {
     return {
-      game: null as Games | null,
+      games: [] as Games[],
       cart: "",
     }
   },
   methods: {
-    getgame() {
-      $fetch("/api/game/" + this.$route.params.idGame).then(response => this.game = (response as any)[0])
+    getcart() {
+      $fetch("/api/cart/cart").then(response => this.games = response as Games[])
+      console.log(this.games)
     },
   }, 
   mounted() {
-    this.getgame()
+    this.getcart()
   }
 })
 </script>
 
 <template>
-    <template v-if="game">
-        <section>
-            <div id="gameName">
-                <img :src="'/img/' + game.img" alt="" />
-                <h2>{{game.gamename}}</h2>
-                <p>{{game.platform}}</p>
-                <p>{{game.price}}€</p>
-            </div>
-        </section>
-    </template>
+  <section>
+    <div id="gameName">
+      <h2>CARRELLO</h2>
+      <article v-for="game in games">
+        <h3>{{game.gamename}}</h3><p>{{game.platform}}</p>
+        <img :src="'/img/' + game.img" alt="" />
+        <p>{{game.price}}€</p>
+      </article>
+    </div>
+  </section>
 </template>

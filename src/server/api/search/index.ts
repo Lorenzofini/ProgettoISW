@@ -20,7 +20,7 @@ export default defineEventHandler(async function(event) {
   
     // Errore se l'utente non è stato trovato
     if (!Array.isArray(results) || results.length == 0) {
-      throw createError({ statusCode: 400, statusMessage: "Nome errate"})
+      throw createError({ statusCode: 400, statusMessage: "Name errate"})
     }
     
     let i = 0
@@ -33,7 +33,7 @@ export default defineEventHandler(async function(event) {
     }
 
     
-    throw createError({ statusCode: 400, statusMessage: "Nome errato"})
+    throw createError({ statusCode: 400, statusMessage: "Name errate"})
    
     
   

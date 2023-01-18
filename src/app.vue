@@ -16,7 +16,7 @@ export default defineComponent({
   },
   methods: {
     search(){
-      $fetch("/api/search/search", {
+      $fetch("/api/search", {
         method: "POST",
         body: {
           game: this.searchGame,
