@@ -1,5 +1,6 @@
 <script lang="ts">
 import { Utente } from "~/types"
+import { Games } from "~/types"
 
 export default defineComponent({
     // Fornisce l'oggetto utente a tutti i componenti dell'applicativo
@@ -12,6 +13,7 @@ export default defineComponent({
     return {
       utente: null as Utente | null,
       searchGame: "",
+      games: [] as Games[],
     }
   },
   methods: {
@@ -32,10 +34,15 @@ export default defineComponent({
     async logout() {
       await $fetch("/api/auth/logout")
       this.getUtente()
-    }
+    },
+    getcart() {
+      $fetch("/api/cart").then(response => this.games = response as Games[])
+      console.log(this.games)
+    },
   },
   mounted() {
-    this.getUtente()
+    this.getUtente(),
+    this.getcart()
   }
 })
 </script>
@@ -58,7 +65,8 @@ export default defineComponent({
     <NuxtLink v-if="!utente" to="/login"><img class="login" src="/img/login.png" alt="Login"/></NuxtLink>
     <NuxtLink v-else to="/" @click.prevent="logout"><img class="logout" src="/img/logout.png" alt="Logout"/></NuxtLink>
     <!--Mostra il tasto di logout altrimenti-->
-    <NuxtLink to="/cart"><img class="shop" src="/img/shop.png"/></NuxtLink>
+    <NuxtLink v-if="games.length>0" to="/cart"><img class="shop" src="/img/shop_pieno.png"/></NuxtLink>
+    <NuxtLink v-else to="/cart"><img class="shop" src="/img/shop.png"/></NuxtLink>
   </header>
   <main>
     <NuxtPage />
