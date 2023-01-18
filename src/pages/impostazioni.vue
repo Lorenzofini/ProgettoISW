@@ -1,34 +1,52 @@
 <script lang="ts">
 import { tSParenthesizedType } from "@babel/types";
-import { Games } from "../types"
+import { Gamedel } from "../types"
 
 export default defineComponent({
   data() {
     return {
         gamename: "",
         platform: "",
+        trailer: "",
         relasedate: "",
         price: "",
-        namekind: ""
+        namekind: "",
+        rate: "",
+        img: "",
+        gameid: "",
+        datiGames: [] as Gamedel[]
     }
   },
   methods: {
     add(){
-        console.log(this.namekind)
         $fetch("/api/add", {
         method: "POST",
         body: {
           Gamename: this.gamename,
           Platform: this.platform,
+          Trailer: this.trailer,
           Relasedate: this.relasedate,
           Price: this.price,
+          Rate: this.rate,
+          Img: this.img,
           Namekind: this.namekind
         }
       })
+    },
+    delet(){
+      $fetch("/api/delete/del", {
+        method: "POST",
+        body: {
+          Gameid: this.gameid,
+        }
+      })
+    },
+    getALLgames() {
+      $fetch("/api/delete").then(response => this.datiGames = response as Gamedel[])
     }
   },
   mounted() {
-   
+    this.getALLgames()
   }
 })
 </script>
@@ -36,8 +54,11 @@ export default defineComponent({
     <form class="aggiungi">
         <input type="text" placeholder="gamename" v-model="gamename">
         <input type="text" placeholder="platform" v-model="platform">
+        <input type="text" placeholder="trailer" v-model="trailer">
         <input type="text" placeholder="relasedate" v-model="relasedate">
         <input type="text" placeholder="price" v-model="price">
+        <input type="text" placeholder="rate" v-model="rate">
+        <input type="text" placeholder="img" v-model="img">
         <select v-model="namekind">
             <option value ="1">Action</option>
             <option value ="2">Adventure</option>
@@ -58,5 +79,11 @@ export default defineComponent({
             <option value ="17">Board/Card Game</option>
         </select> 
         <input id="submit" type="button" value="aggiungi" @click=add()>
+    </form>
+    <form>
+      <select v-model="gameid">
+        <option  v-for="game in datiGames" :value ="game.idgame">{{game.gamename}}</option>
+      </select>
+      <input id="submit" type="button" value="Elimina" @click=delet()>
     </form>
 </template>

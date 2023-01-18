@@ -10,6 +10,11 @@ export interface Games {
   namekind: string
 }
 
+export interface Gamedel {
+  idgame: number
+  gamename: string
+}
+
 export interface Utente {
   idlogin: number
   username: string
