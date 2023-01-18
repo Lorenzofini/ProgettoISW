@@ -13,9 +13,9 @@ export default defineEventHandler(async function(event) {
   // Esegue la query al database per ottenere i dati dell'utente in base allo username
   const connection = await createConnection()
   const [results] = await connection.execute(
-    `SELECT idlogin, username, password, name
+    `SELECT idlogin, username, password, name, active
      FROM login
-     WHERE username=? AND active=1
+     WHERE username=?
      GROUP BY idlogin, username, password, name;`,
     [username]
   )
@@ -26,7 +26,6 @@ export default defineEventHandler(async function(event) {
   }
 
   const user = results[0] as any
-
   // Confronta l'hash della password fornita con quello nel database
   const passwordCorretta = await bcrypt.compare(password, user.password)
 

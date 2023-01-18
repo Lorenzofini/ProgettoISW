@@ -14,4 +14,5 @@ export interface Utente {
   idlogin: number
   username: string
   nome: string
+  active: number
 }

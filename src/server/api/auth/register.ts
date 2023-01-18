@@ -22,13 +22,22 @@ export default defineEventHandler(async function(event) {
 
   // Crea l'hash della password per non salvarla in chiaro
   const passwordHash = await bcrypt.hash(password, 10)
-
+  
   // Inserisce l'utente nel database
-  await connection.execute(
-    `INSERT INTO login (username, password, name, active)
-     VALUES (?, ?, ?, 1)`,
-    [username, passwordHash, nome]
-  )
+  if(nome == 'venditore' || nome == 'Venditore') {
+    await connection.execute(
+      `INSERT INTO login (username, password, name, active)
+       VALUES (?, ?, ?, 1)`,
+      [username, passwordHash, nome]
+    )
+  }
+  else {
+    await connection.execute(
+      `INSERT INTO login (username, password, name, active)
+       VALUES (?, ?, ?, 0)`,
+      [username, passwordHash, nome]
+    )
+  }
 
   // Estrae i dati per il nuovo utente
   const [results] = await connection.execute(

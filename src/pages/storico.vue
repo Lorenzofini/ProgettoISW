@@ -15,7 +15,7 @@ export default defineComponent({
   },
   methods: {
     getcart() {
-      $fetch("/api/cart").then(response => this.games = response as Games[])
+      $fetch("/api/storico").then(response => this.games = response as Games[])
       console.log(this.games)
     },
   }, 
@@ -27,8 +27,7 @@ export default defineComponent({
 
 <template>
   <section>
-      <h2>CARRELLO</h2>
-      <NuxtLink to="/storico">Vai allo Storico</NuxtLink>
+      <h2>Storico ordini</h2>
       <section v-for="game in games">
         <img :src="'/img/' + game.img" alt="" />
         <div>
@@ -37,12 +36,9 @@ export default defineComponent({
         <div id="price">
           <p>{{game.price}}€</p>
           <p>Quantità:{{ game.quantità }}</p>
+          <p>In data: {{ game.date }}</p>
         </div>
         <hr>
       </section>
-  </section>
-  <section>
-    <h3>Totale €</h3>
-    <button type="button"><NuxtLink to="/buy">ACQUISTA</NuxtLink></button>
   </section>
 </template>
