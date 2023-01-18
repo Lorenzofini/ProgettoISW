@@ -63,7 +63,7 @@ export default defineComponent({
   </section>
   <section>
     <h3>Totale {{this.totale}}€</h3>
-    <button type="button"><NuxtLink to="/buy">ACQUISTA</NuxtLink></button>
+    <button type="button" @click="buy()">ACQUISTA</button>
   </section>
 </div>
 <div v-else>
