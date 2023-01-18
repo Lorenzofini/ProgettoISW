@@ -21,10 +21,10 @@ CREATE TABLE IF NOT EXISTS `gamesisw`.`game` (
   `idgame` INT NOT NULL AUTO_INCREMENT,
   `gamename` VARCHAR(100) NOT NULL,
   `platform` VARCHAR(500) NOT NULL,
-  `trailer` VARCHAR(500) NOT NULL,
+  `trailer` VARCHAR(500),
   `relasedate` VARCHAR(500) NOT NULL,
   `price` INT NOT NULL,
-  `rate` INT NOT NULL,
+  `rate` INT,
   PRIMARY KEY (`idgame`))
 ENGINE = InnoDB;
 

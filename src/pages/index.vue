@@ -17,7 +17,6 @@ export default defineComponent({
   }
 })
 </script>
-
 <template>
   <GameItem  v-for="game in datiGames" :game="game" />
 </template>
