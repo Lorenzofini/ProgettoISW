@@ -14,7 +14,7 @@ export default defineComponent({
 
 <template>
   <article>
-    <a  :href="'/game/' + game.idgame">
+    <a :href="'/game/' + game.idgame">
       <img :src="'/img/' + game.img" alt="" />
       <h3>{{game.gamename}}</h3><p>{{game.platform}}</p>
       <p>{{game.price}}€</p>

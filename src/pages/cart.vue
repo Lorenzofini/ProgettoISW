@@ -1,4 +1,5 @@
 <script lang="ts">
+import { del } from "nuxt/dist/app/compat/capi"
 import { Games } from "../types"
 
 definePageMeta({
@@ -10,6 +11,7 @@ export default defineComponent({
   data() {
     return {
       games: [] as Games[],
+      totale: "",
       cart: "",
     }
   },
@@ -20,10 +22,23 @@ export default defineComponent({
     },
     buy() {
       $fetch("/api/buy").then(window.location.href="/")
+    },
+    gettot() {
+      $fetch("/api/cart/tot").then((response) => this.totale = response)
+      console.log(this.games)
+    },
+    del(id: number){
+      $fetch("/api/cart/del", {
+        method: "POST",
+        body: {
+          Gameid: id,
+        }
+      })
     }
   }, 
   mounted() {
     this.getcart()
+    this.gettot()
   }
 })
 </script>
@@ -41,13 +56,14 @@ export default defineComponent({
         <div id="price">
           <p>{{game.totale}}€</p>
           <p>Quantità:{{ game.quantità }}</p>
+          <button @click=del(game.idgame)>delete</button>
         </div>
         <hr>
       </section>
   </section>
   <section>
-    <h3>Totale €</h3>
-    <button type="button" @click="buy()">PAGA</button>
+    <h3>Totale {{this.totale}}€</h3>
+    <button type="button"><NuxtLink to="/buy">ACQUISTA</NuxtLink></button>
   </section>
 </div>
 <div v-else>
