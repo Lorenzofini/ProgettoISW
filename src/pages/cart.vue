@@ -10,6 +10,7 @@ export default defineComponent({
   data() {
     return {
       games: [] as Games[],
+      totale: "",
       cart: "",
     }
   },
@@ -18,9 +19,14 @@ export default defineComponent({
       $fetch("/api/cart").then(response => this.games = response as Games[])
       console.log(this.games)
     },
+    gettot() {
+      $fetch("/api/cart/tot").then((response) => this.totale = response)
+      console.log(this.games)
+    },
   }, 
   mounted() {
     this.getcart()
+    this.gettot()
   }
 })
 </script>
@@ -35,14 +41,14 @@ export default defineComponent({
           <h3>{{game.gamename}}</h3><p>{{game.platform}}</p>
         </div>
         <div id="price">
-          <p>{{game.price}}€</p>
+          <p>{{game.totale}}€</p>
           <p>Quantità:{{ game.quantità }}</p>
         </div>
         <hr>
       </section>
   </section>
   <section>
-    <h3>Totale €</h3>
+    <h3>Totale {{this.totale}}€</h3>
     <button type="button"><NuxtLink to="/buy">ACQUISTA</NuxtLink></button>
   </section>
 </template>
