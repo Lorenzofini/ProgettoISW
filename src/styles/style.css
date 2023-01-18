@@ -90,6 +90,11 @@ section > img {
   display: inline;
 }
 
+section > h3{
+  display: inline-block;
+  margin-left: 42%;
+}
+
 section > div{
   display: inline-block;
 }
@@ -220,6 +225,10 @@ section > div#add > img {
   padding-top: 20px;
 }
 
+section > a {
+  float: right;
+}
+
 div#addShop{
   display: inline-block;
   margin-left: 25%;
@@ -247,6 +256,11 @@ div#addShop > button{
 div#kind{
   display: block;
   padding-top: 20px;
+}
+
+button#shop{
+  display: inline-block;
+  margin-left: 17px;
 }
 
 div#addShop >div#kind > p{
