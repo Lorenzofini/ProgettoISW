@@ -23,7 +23,10 @@ header > h1 {
   font-family:" Open Sans,sans-serif";
   margin-left: 20%;
   padding-top: 13px;
+}
 
+.router-link-exact-active[data-v-938b83b0] {
+  color: black;
 }
 
 article, form, main > section {
@@ -60,10 +63,6 @@ article > a > p {
 a{
   text-decoration: none;
   color: #000;
-}
-
-article > a:hover {
-  color:rgb(219, 69, 83);
 }
 
 form {
@@ -241,6 +240,37 @@ iframe{
     width:300px;
     height:200px;
     
-  } 
+  }
+  article {
+    width: 100%;
+    margin: 0;
+  }
+  img.login {
+    max-height: 33px;
+    max-width: 100%;
+    padding-top: 33px;
+    padding-right: 0px;
+  }
+  img.shop{
+    padding: 26px 0px 0px 0px;
+    margin: 0;
+  }
+  form.modulo-ricerca {
+    padding-left: 0px;
+    padding-right: 0px;
+    padding-top: 40px;
+    width: 49%;
+  }
+  header > h1 {
+    margin-left: 2%;
+    padding-bottom: 10px;
+    width: 23%;
+  }
+  div#addShop {
+    margin: 0;
+  }
+  div#rated{
+    padding: 0;
+  }
 
 }
