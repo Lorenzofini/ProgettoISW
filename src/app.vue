@@ -47,7 +47,8 @@ export default defineComponent({
     <Meta name="description" content="Game Shop" />
   </Head>
   <header>
-    <button v-if="utente?.active==1"><NuxtLink to="/impostazioni">Impostazioni</NuxtLink></button>
+    <NuxtLink v-if="utente?.active==1" to="/impostazioni"><img class="shop" src="/img/impostazioni.png"/></NuxtLink>
+
     <h1><NuxtLink to="/">Game Shop</NuxtLink></h1>
     <form class="modulo-ricerca">
       <input id="search" type="text" placeholder="Cerca nel sito" v-model="searchGame">

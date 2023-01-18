@@ -21,7 +21,7 @@ footer {
 
 header > h1 {
   font-family:" Open Sans,sans-serif";
-  margin-left: 20%;
+  margin-left: 18%;
   padding-top: 13px;
 }
 
@@ -67,6 +67,10 @@ a{
 
 form {
   padding: 20px 5%;
+}
+
+form.aggiungi{
+  margin-top: 20px;
 }
 
 hr{
@@ -333,5 +337,8 @@ iframe{
   }
   section > div#price {
     display: block;
+  }
+  button#shop {
+    margin-left: 38%;
   }
 }

@@ -56,14 +56,14 @@ export default defineComponent({
         <div id="price">
           <p>{{game.totale}}€</p>
           <p>Quantità:{{ game.quantità }}</p>
-          <button @click=del(game.idgame)>delete</button>
+          <button id="shop" @click=del(game.idgame)>delete</button>
         </div>
         <hr>
       </section>
   </section>
   <section>
     <h3>Totale {{this.totale}}€</h3>
-    <button type="button"><NuxtLink to="/buy">ACQUISTA</NuxtLink></button>
+    <button id="shop" type="button" @click="buy()">ACQUISTA</button>
   </section>
 </div>
 <div v-else>

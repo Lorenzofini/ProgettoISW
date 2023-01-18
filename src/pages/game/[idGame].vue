@@ -18,7 +18,7 @@ export default defineComponent({
         body: {
           cart: gamenumber
         }
-      })
+      }).then(() => alert("aggiunto al carello"))
     },
   },
   mounted() {
