@@ -29,11 +29,15 @@ export default defineComponent({
   <section>
     <div id="gameName">
       <h2>CARRELLO</h2>
-      <article v-for="game in games">
+      <section v-for="game in games">
         <h3>{{game.gamename}}</h3><p>{{game.platform}}</p>
         <img :src="'/img/' + game.img" alt="" />
         <p>{{game.price}}€</p>
-      </article>
+        <p>Quantità:{{ game.quantità }}</p>
+      </section>
     </div>
+  </section>
+  <section>
+    <h3>Totale €</h3>
   </section>
 </template>
